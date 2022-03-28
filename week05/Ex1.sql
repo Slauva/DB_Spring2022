@@ -18,7 +18,8 @@ CREATE TABLE ShippingAddresses
     street   CHAR(50),
     district CHAR(50),
     city     CHAR(50),
-    FOREIGN KEY (clientId) REFERENCES Customer
+    clientId int not null,
+    FOREIGN KEY (clientId) REFERENCES Customer(clientId)
 );
 
 CREATE TABLE Item
@@ -37,14 +38,18 @@ CREATE TABLE Manufacturer
 
 CREATE TABLE Includes
 (
-    FOREIGN KEY (itemId) REFERENCES Item,
-    FOREIGN KEY (orderId) REFERENCES Order
+    itemId int not null,
+    FOREIGN KEY (itemId) REFERENCES Item(itemId),
+    orderId int not null,
+    FOREIGN KEY (orderId) REFERENCES Order(orderId)
     quantity INTEGER
 );
 
 CREATE TABLE Produce
 (
-    FOREIGN KEY (itemId) REFERENCES Item,
-    FOREIGN KEY (manufacturerId) REFERENCES Manufacturer,
+    itemId int not null,
+    FOREIGN KEY (itemId) REFERENCES Item(itemId),
+    manufacturerId int not null,
+    FOREIGN KEY (manufacturerId) REFERENCES Manufacturer(manufacturerId),
     quantity       INTEGER
 );

@@ -21,5 +21,6 @@ CREATE TABLE Company
 CREATE TABLE Structure
 (
     structureId INTEGER KEY,
-    FOREIGN KEY (companyId) REFERENCES Company
+    companyId int not null,
+    FOREIGN KEY (companyId) REFERENCES Company(companyId)
 );
