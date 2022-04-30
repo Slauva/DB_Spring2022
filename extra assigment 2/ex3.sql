@@ -36,7 +36,7 @@ BEGIN
                            to_hex(floor(random() * 256)::INT)::TEXT, ':', to_hex(floor(random() * 256)::INT)::TEXT, ':',
                            to_hex(floor(random() * 256)::INT)::TEXT, ':', to_hex(floor(random() * 256)::INT)::TEXT);
             country = countries[floor(random() * 10) + 1];
-            "date" = NOW() + (random() * (NOW() + '100 days' - NOW())) + '20 days';
+            "date" = NOW() + (random() * (NOW() + '15 days' - NOW())) + '5 days';
             INSERT INTO router (id, mac_add, ip, country, date) VALUES (next_id(), mac_add, ip, country, date);
         END LOOP;
 END
